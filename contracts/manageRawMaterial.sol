@@ -50,4 +50,14 @@ contract Registry{
 
     }
 
+ function getBillOfSupplyById(uint id) returns(string materialName, uint materialQuantity, string materialOrigin, string materialZipcode, shippedLocations materialShippedTo, materialStatusOptions materialStatus  ){
+
+        materialName = billsOfSupply[id].materialName ;
+        materialQuantity = billsOfSupply[id].materialQuantity; 
+        materialOrigin = billsOfSupply[id].materialOrigin;
+        materialZipcode = billsOfSupply[id].materialZipcode; 
+        materialShippedTo = billsOfSupply[id].materialShippedTo; 
+        materialStatus = billsOfSupply[id].materialStaus ;
+	   }
+
 }
