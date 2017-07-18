@@ -7,7 +7,7 @@ contract Registry{
     
     struct billOfSupply{
 
-        string materialId;    
+        uint materialId;    
         string materialName;
         uint materialQuantity;
         string materialOrigin;
@@ -26,7 +26,7 @@ contract Registry{
         bos.materialQuantity = quantity;
         bos.materialOrigin = origin;
         bos.materialZipcode = zipcode;
-        bos.shippedTo = shippedLocations(shippedTo);
+        bos.materialShippedTo = shippedLocations(shippedTo);
         bos.materialStaus = materialStatusOptions(status);
 
         billsOfSupply.push(bos);
@@ -40,13 +40,13 @@ contract Registry{
             if(billsOfSupply[i].materialId == mid)
              break;
         }
-        billsOfSupply.materialId = billsOfSupply.length;
-        billsOfSupply.materialName = name;
-        billsOfSupply.materialQuantity = quantity;
-        billsOfSupply.materialOrigin = origin;
-        billsOfSupply.materialZipcode = zipcode;
-        billsOfSupply.shippedTo = shippedLocations(shippedTo);
-        billsOfSupply.materialStaus = materialStatusOptions(status);
+        billsOfSupply[i].materialId = billsOfSupply.length;
+        billsOfSupply[i].materialName = name;
+        billsOfSupply[i].materialQuantity = quantity;
+        billsOfSupply[i].materialOrigin = origin;
+        billsOfSupply[i].materialZipcode = zipcode;
+        billsOfSupply[i].materialShippedTo = shippedLocations(shippedTo);
+        billsOfSupply[i].materialStaus = materialStatusOptions(status);
 
     }
 
