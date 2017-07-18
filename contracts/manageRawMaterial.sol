@@ -50,7 +50,7 @@ contract Registry{
 
     }
 
- function getBillOfSupplyById(uint id) returns(string materialName, uint materialQuantity, string materialOrigin, string materialZipcode, shippedLocations materialShippedTo, materialStatusOptions materialStatus  ){
+    function getBillOfSupplyById(uint id) returns(string materialName, uint materialQuantity, string materialOrigin, string materialZipcode, shippedLocations materialShippedTo, materialStatusOptions materialStatus  ){
 
         materialName = billsOfSupply[id].materialName ;
         materialQuantity = billsOfSupply[id].materialQuantity; 
@@ -58,6 +58,17 @@ contract Registry{
         materialZipcode = billsOfSupply[id].materialZipcode; 
         materialShippedTo = billsOfSupply[id].materialShippedTo; 
         materialStatus = billsOfSupply[id].materialStaus ;
-	   }
+	  }
+
+    // Throws error  "Internal type is not allowed for public or external functions."
+    
+    // function getAllBillsOfSupply() returns(billOfSupply[] bos){
+
+    //     bos = billsOfSupply;
+    // }
+
+    function getLength() returns(uint l){
+      l=billsOfSupply.length;
+    }
 
 }
