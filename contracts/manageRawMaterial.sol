@@ -75,8 +75,9 @@ contract ManageRawMaterial{
         materialZipcode = billsOfSupply[index].materialZipcode; 
         materialShippedTo = billsOfSupply[index].materialShippedTo; 
         materialStatus = billsOfSupply[index].materialStaus ;
-	  }  
-   
+	  } 
+
+    // Utility Function
     function getLength() returns(uint l){
       l=billsOfSupply.length;
     }

@@ -44,6 +44,46 @@ contract managePalette {
         palettes[i].paletteStatus = paletteStatusOptions(status);        
   }
 
+  function getPaletteById(string barCode) returns(string weight, string products, paletteStatusOptions status  ){
+
+        uint l = palettes.length;
+        for(uint i=0; i<l; ++i)
+        {
+          if(stringsEqual(palettes[i].paletteBarCode,barCode)==true)
+				      break;
+	 		  }
+
+        weight = palettes[i].paletteWeight;
+        products = palettes[i].products;
+        status = palettes[i].paletteStatus; 
+  }
+
+  function getProductByPaletteId(string barCode) returns (string paletteProducts){
+        
+        uint l = palettes.length;
+        for(uint i=0; i<l; ++i)
+        {
+          if(stringsEqual(palettes[i].paletteBarCode,barCode)==true)
+				      break;
+	 		  }
+
+        paletteProducts = palettes[i].products; 
+
+  }
+
+  function getPaletteByIndex(uint index) returns (string barCode, string weight, string products, paletteStatusOptions status  ){
+        
+        barCode = palettes[index].paletteBarCode;
+        weight = palettes[index].paletteWeight;
+        products = palettes[index].products;
+        status = palettes[index].paletteStatus; 
+  
+  }
+
+  // utility function
+  function getLength() returns(uint l){
+      l=palettes.length;
+    }
 
 
       // utility function
