@@ -1,6 +1,8 @@
 pragma solidity ^0.4.4;
 
-contract Registry{
+contract ManageRawMaterial{
+
+    address public owner;
 
     enum shippedLocations { Pepe, Levis, JackNJones, Wrangler, Lee}
     enum materialStatusOptions {Ready, Consumed}
@@ -17,6 +19,11 @@ contract Registry{
     }
 
     billOfSupply[] billsOfSupply;
+
+    function ManageRawMaterial()
+    {
+        owner = msg.sender;
+    }
 
     function createBillOfSupply(string name, uint quantity, string origin, string zipcode, uint8 shippedTo, uint8 status ){
 
@@ -53,22 +60,28 @@ contract Registry{
     function getBillOfSupplyById(uint id) returns(string materialName, uint materialQuantity, string materialOrigin, string materialZipcode, shippedLocations materialShippedTo, materialStatusOptions materialStatus  ){
 
         materialName = billsOfSupply[id].materialName ;
-        materialQuantity = billsOfSupply[id].materialQuantity; 
+        materialQuantity = billsOfSupply[idmaterialQuantity; 
         materialOrigin = billsOfSupply[id].materialOrigin;
         materialZipcode = billsOfSupply[id].materialZipcode; 
         materialShippedTo = billsOfSupply[id].materialShippedTo; 
         materialStatus = billsOfSupply[id].materialStaus ;
 	  }
 
-    // Throws error  "Internal type is not allowed for public or external functions."
     
-    // function getAllBillsOfSupply() returns(billOfSupply[] bos){
+    function getBillOfSupplyByIndex(uint index) returns(string materialName, uint materialQuantity, string materialOrigin, string materialZipcode, shippedLocations materialShippedTo, materialStatusOptions materialStatus  ){
 
-    //     bos = billsOfSupply;
-    // }
-
+        materialName = billsOfSupply[index].materialName ;
+        materialQuantity = billsOfSupply[index].materialQuantity; 
+        materialOrigin = billsOfSupply[index].materialOrigin;
+        materialZipcode = billsOfSupply[index].materialZipcode; 
+        materialShippedTo = billsOfSupply[index].materialShippedTo; 
+        materialStatus = billsOfSupply[index].materialStaus ;
+	  }  
+   
     function getLength() returns(uint l){
       l=billsOfSupply.length;
     }
+
+
 
 }
