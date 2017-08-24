@@ -135,32 +135,104 @@ contract ManageAgreement{
 
     	uint i = getAgreementmentIndex(agreementId);
 
+        agreementList[i].actualPrintTxns++;
+        if(agreementList[i].actualPrintTxns > = agreementList[i].allowedPrintTxns)
+        {
+            agreementList[i].agreementStatus = "EXHAUSTED";
+        }
+
+        //new to add checking of expiry date also 
+
 
     }
 
-    //     //Function to get Agreement Information by DesignerId and index
-    // function getAgreementByDesigner(string ) returns (string agreementStatus,string designerId,string vendorId,string designFileId,string printerId,string agreementStartDate,string agreementEndDate,uint allowedPrintTxns,uint actualPrintTxns,uint amountPerPrint,uint amountDue,uint amountPaid){
+        //Function to get Agreement Information by DesignerId and index
+    function getAgreementByDesigner(string designerId) returns (string){
 
-    // 	uint l = agreementList.length;
-    //     for(uint i=0; i<l; ++i)
-    //     {
-    //       if(stringsEqual(agreementList[i].agreementId,agreementId)==true)
-				//       break;
-	   //  }
-    // 	designerId = agreementList[i].designerId ;
-    // 	vendorId = agreementList[i].vendorId ;
-    // 	designFileId = agreementList[i].designFileId ;
-    // 	printerId = agreementList[i].printerId ;
-    // 	agreementStartDate = agreementList[i].agreementStartDate ;    	
-    // 	agreementEndDate = agreementList[i].agreementEndDate;
-    // 	allowedPrintTxns = agreementList[i].allowedPrintTxns ;
-    // 	actualPrintTxns = agreementList[i].actualPrintTxns ;
-    // 	amountPerPrint = agreementList[i].amountPerPrint ;
-    // 	amountPaid = agreementList[i].amountPaid ;
-    // 	amountDue = agreementList[i].amountDue ;
+    	uint l = agreementList.length;
+        var output ="";
+        var delimiter="||" ;
 
-    // }
+        for(uint i=0; i<l; ++i)
+        {
+          if(stringsEqual(agreementList[i].designerId,designerId)==true)
+          {
 
+
+               output=strConcat(output,agreementList[i].agreementStatus,delimiter);
+               output=strConcat(output,agreementList[i].designerId,delimiter);
+               output=strConcat(output,agreementList[i].vendorId,delimiter);
+               output=strConcat(output,agreementList[i].designFileId,delimiter);
+               output=strConcat(output,agreementList[i].printerId,delimiter);   
+               output=strConcat(output,agreementList[i].agreementStartDate,delimiter);
+               output=strConcat(output,agreementList[i].agreementEndDate,delimiter);
+               output=strConcat(output,uintToString(agreementList[i].allowedPrintTxns),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].actualPrintTxns),delimiter);  
+               output=strConcat(output,uintToString(agreementList[i].amountPerPrint),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].amountDue),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].amountPaid),delimiter);
+
+          }
+
+				    
+	    }
+    	// designerId = agreementList[i].designerId ;
+    	// vendorId = agreementList[i].vendorId ;
+    	// designFileId = agreementList[i].designFileId ;
+    	// printerId = agreementList[i].printerId ;
+    	// agreementStartDate = agreementList[i].agreementStartDate ;    	
+    	// agreementEndDate = agreementList[i].agreementEndDate;
+    	// allowedPrintTxns = agreementList[i].allowedPrintTxns ;
+    	// actualPrintTxns = agreementList[i].actualPrintTxns ;
+    	// amountPerPrint = agreementList[i].amountPerPrint ;
+    	// amountPaid = agreementList[i].amountPaid ;
+    	// amountDue = agreementList[i].amountDue ;
+
+    }
+
+        //Function to get Agreement Information by VendorId
+    function getAgreementByDesigner(string designerId) returns (string){
+
+        uint l = agreementList.length;
+        var output ="";
+        var delimiter="||" ;
+
+        for(uint i=0; i<l; ++i)
+        {
+          if(stringsEqual(agreementList[i].vendorId,vendorId)==true)
+          {
+
+
+               output=strConcat(output,agreementList[i].agreementStatus,delimiter);
+               output=strConcat(output,agreementList[i].designerId,delimiter);
+               output=strConcat(output,agreementList[i].vendorId,delimiter);
+               output=strConcat(output,agreementList[i].designFileId,delimiter);
+               output=strConcat(output,agreementList[i].printerId,delimiter);   
+               output=strConcat(output,agreementList[i].agreementStartDate,delimiter);
+               output=strConcat(output,agreementList[i].agreementEndDate,delimiter);
+               output=strConcat(output,uintToString(agreementList[i].allowedPrintTxns),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].actualPrintTxns),delimiter);  
+               output=strConcat(output,uintToString(agreementList[i].amountPerPrint),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].amountDue),delimiter);
+               output=strConcat(output,uintToString(agreementList[i].amountPaid),delimiter);
+
+          }
+
+                    
+        }
+        // designerId = agreementList[i].designerId ;
+        // vendorId = agreementList[i].vendorId ;
+        // designFileId = agreementList[i].designFileId ;
+        // printerId = agreementList[i].printerId ;
+        // agreementStartDate = agreementList[i].agreementStartDate ;       
+        // agreementEndDate = agreementList[i].agreementEndDate;
+        // allowedPrintTxns = agreementList[i].allowedPrintTxns ;
+        // actualPrintTxns = agreementList[i].actualPrintTxns ;
+        // amountPerPrint = agreementList[i].amountPerPrint ;
+        // amountPaid = agreementList[i].amountPaid ;
+        // amountDue = agreementList[i].amountDue ;
+
+    }
 
 
 
